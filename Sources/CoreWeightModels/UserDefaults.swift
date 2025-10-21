@@ -6,9 +6,9 @@
 //
 import Foundation
 
-extension UserDefaults {
+public extension UserDefaults {
     
-    public static var preferredUnitSystem: UnitSystem {
+    static var preferredUnitSystem: UnitSystem {
         get {
             guard let encodedData = UserDefaults.standard.object(forKey: UserDefaultKeys.preferredUnitSystem.rawValue) else { return .imperial }
             guard let unitSystem = try? JSONDecoder().decode(UnitSystem.self, from: encodedData as! Data) else { return .imperial }

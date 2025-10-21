@@ -12,7 +12,7 @@ public struct Weight {
     public var unitSystem: UnitSystem
 }
 
-extension Weight {
+public extension Weight {
     func normalized() -> Weight {
         if unitSystem == UserDefaults.preferredUnitSystem { return self }
         

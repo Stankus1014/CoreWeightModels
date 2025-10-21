@@ -1,0 +1,40 @@
+//
+//  Models.swift
+//  CoreWeightModels
+//
+//  Created by William Stankus on 10/20/25.
+//
+
+import Foundation
+
+public struct Weight {
+    public var value: Double
+    public var unitSystem: UnitSystem
+}
+
+extension Weight {
+    func normalized() -> Weight {
+        if unitSystem == UserDefaults.preferredUnitSystem { return self }
+        
+        return self.convertToPreferredUnitSystem()
+    }
+    
+    private func convertToPreferredUnitSystem() -> Weight {
+        switch self.unitSystem {
+        case .imperial:
+            // Convert lb → kg
+            let convertedValue = self.value * 0.45359237
+            return Weight(value: convertedValue, unitSystem: .metric)
+
+        case .metric:
+            // Convert kg → lb
+            let convertedValue = self.value / 0.45359237
+            return Weight(value: convertedValue, unitSystem: .imperial)
+        }
+    }
+}
+
+public enum UnitSystem : Codable {
+    case imperial
+    case metric
+}

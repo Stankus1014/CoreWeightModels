@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Weight {
+public struct Weight: Codable {
     public var value: Double
     public var unitSystem: UnitSystem
 }

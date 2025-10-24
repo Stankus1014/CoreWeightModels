@@ -10,6 +10,11 @@ import Foundation
 public struct Weight: Codable {
     public var value: Double
     public var unitSystem: UnitSystem
+    
+    public init(value: Double, unitSystem: UnitSystem) {
+        self.value = value
+        self.unitSystem = unitSystem
+    }
 }
 
 public extension Weight {

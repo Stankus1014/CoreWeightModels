@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Weight: Codable {
+public struct Weight: Codable, Sendable {
     public var value: Double
     public var unitSystem: UnitSystem
     
@@ -39,7 +39,7 @@ public extension Weight {
     }
 }
 
-public enum UnitSystem : Codable {
+public enum UnitSystem : Codable, Sendable {
     case imperial
     case metric
 }
